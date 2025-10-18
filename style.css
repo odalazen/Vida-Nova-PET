@@ -1,0 +1,80 @@
+:root {
+    --laranja: rgb(254, 179, 2);
+    --verde: rgb(118, 186, 0);
+    --azul: rgb(21, 0, 140);
+    --branco: rgb(255, 255, 255);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+html{font-size: 1em;}
+
+.separador {
+    margin-top: 5%;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+nav {display: flex;align-items: center;padding-right: 5%; font-family:sans-serif;}
+
+    nav a{ text-decoration: none; padding-left: 40px; color: black;}
+
+    nav a:hover{
+        color: var(--verde);
+    }
+
+    .btn{
+        color: white;
+        display: block;
+        width: 200px;
+        background-color: var(--verde);
+        padding: 7px 10px 7px 10px;
+        border-radius: 20px;
+        font-size: 1.2em;
+        margin: auto;
+        margin-left: 30px;
+        text-align: center;
+        transition: 0.4s ease;
+    }
+
+    .btn:hover{background: rgb(255, 166, 0);
+    color: white; font-size: 1.22em; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.193);}
+
+img.site-logo {width: 140px;height: 140px;}
+
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.148), rgba(0, 0, 0, 0.268)), url(img/imagem-background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+main{
+    margin: auto;
+    max-width: 90%;
+    padding-top: 20%;
+    text-align: center;
+}
+
+article{
+    background-color: rgba(0, 0, 0, 0.336);
+    border-radius: 12px;
+    word-spacing: 1px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 50%;
+    margin: 0 auto;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.316);
+    padding: 10%;
+
+}
