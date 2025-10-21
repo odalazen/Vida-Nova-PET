@@ -17,6 +17,8 @@ html{font-size: 1em;}
     margin-top: 5%;
 }
 
+.separador-conteudo{margin-top:12%}
+/*CONFIGURAÇÃO DO HEADER*/
 header {
     position: fixed;
     width: 100%;
@@ -25,15 +27,79 @@ header {
     justify-content: space-between;
     z-index: 1;
 }
-
-nav {display: flex;align-items: center;padding-right: 5%; font-family:sans-serif;}
+/*BARRA DE NAVEGAÇÃO*/
+nav {display: flex;
+    align-items: center;
+    padding-right: 5%; 
+    font-family:sans-serif;}
 
     nav a{ text-decoration: none; padding-left: 40px; color: black;}
 
     nav a:hover{
         color: var(--verde);
     }
+/*menu escondido*/
+    .nav-links {
+  display: flex;
+  gap: 20px;
+}
 
+.menu-toggle {
+  display: none; 
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+}
+
+/* mostra o botão no mobile */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    margin-right: 50px;
+    color: var(--laranja);
+    z-index: 1; 
+  }
+
+   .nav-links {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    background: white;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 20px;
+    gap: 15px;
+    display: none; /* esconde inicialmente */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .nav-links .btn{ 
+    width: 150px;
+    background: none;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    cursor: pointer;
+    transition: none;
+}
+.nav-links .btn:hover{background: none; color: inherit; cursor: pointer; font-size: 18px; text-shadow: none; color: var(--verde); }
+
+  .nav-links.active {
+    display: flex; /* mostra quando ativado */
+  }
+}
+
+
+
+/*CONFIGURAÇÃO DE BOTOES*/
     .btn{
         color: white;
         display: block;
@@ -51,18 +117,39 @@ nav {display: flex;align-items: center;padding-right: 5%; font-family:sans-serif
     .btn:hover{background: rgb(255, 166, 0);
     color: white; font-size: 1.22em; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.193);}
 
-img.site-logo {width: 140px;height: 140px;}
+    .btn#donate{
+        color: white;
+        display: block;
+        width: 200px;
+        background-color: var(--verde);
+        padding: 7px 10px 7px 10px;
+        font-size: 1.2em;
+        
+        margin: 0 auto;
+        margin-top: 20px;
+        text-align: center;
+        transition: 0.4s ease;
+        text-decoration: none;
+}
 
+.btn#donate:hover{background: rgb(255, 166, 0);
+    color: white; font-size: 1.22em; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.193);}
+
+img.site-logo {width: 140px;height: 140px; padding-left: 5%;}
+
+/*IMAGEM DE FUNDO NO BODY*/
 body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.148), rgba(0, 0, 0, 0.268)), url(img/imagem-background.jpg);
+    background-image:url(img/imagem-background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    max-height:900px;
 }
 
 main{
     margin: auto;
     max-width: 90%;
-    padding-top: 20%;
+    padding-top: 15%;
     text-align: center;
 }
 
@@ -77,4 +164,137 @@ article{
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.316);
     padding: 10%;
 
+}
+
+article .titulo{color: var(--verde); font-size: 3em;}
+
+/*CONFIG PRA CELUALRES*/
+@media (max-width: 768px){
+    article{
+        margin-top: 10%;
+    }
+
+    article .titulo{font-size: 2.4em;}
+
+
+    .btn#donate{width: 150px;}
+
+    body{ background-position: center;}
+
+}
+
+section#postalcode{   
+    background-color: var(--laranja); 
+    
+    width: 90%;
+    height: 100px;
+  /* layout: title left, form right, centered vertically */
+  display: flex;
+  align-items: center; /* centra verticalmente o conteúdo */
+  justify-content: space-between;
+  padding: 5%;
+  padding-right: 5%; /* manter espaçamento à direita consistente */
+  gap: 20px;
+  margin: 0 auto;
+
+
+}
+section#postalcode h2 {
+  line-height: 30px;
+  font-family: sans-serif;
+  color: var(--branco);
+  word-spacing: 6px;
+  letter-spacing: 1px;
+  width: 30%;
+  margin: 0; /* remove gaps indesejados */
+}
+
+/* Form dentro da section alinhado à direita */
+section#postalcode form{
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* joga o formulário para a direita */
+  gap: 10px;
+}
+
+section#postalcode .input{ 
+  width: 60%;
+  
+  margin: 0; /* remove margin padrão do .input */
+}
+
+section#postalcode button[type="submit"]{
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--azul);
+  color: var(--branco);
+  cursor: pointer;
+  border: none;
+}
+
+/* Ajustes para telas pequenas */
+@media (max-width: 768px){
+  section#postalcode{
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+  }
+
+  section#postalcode h2{ width: 100%; margin-bottom: 8px; }
+  section#postalcode form{ width: 100%; justify-content: flex-start; gap: 8px; }
+  section#postalcode .input{ width: calc(100% - 100px); }
+}
+
+/*LABEL CONFIGSS*/
+
+.input {
+  position: relative;
+  margin: 20px 0;
+  padding-right: 30px;
+}
+
+.input input {
+    border-radius: 40px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.input label {
+  position: absolute;
+  /* centraliza horizontal e verticalmente dentro do .input */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #777;
+  pointer-events: none;       /* permite clicar direto no input */
+  transition: 0.2s ease all;  /* animação suave */
+}
+
+/* Quando o input estiver focado ou preenchido */
+.input input:focus + label,
+.input input:not(:placeholder-shown) + label,
+.input input:valid + label {
+  top: -10px;
+  /* mantém centralizado horizontalmente quando flutuado */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: #333;
+  background: white; /* opcional: para parecer que flutua */
+  padding: 0 5px;
+}
+#cep{
+    padding: 7%;
+    margin-right: 30px;
+}
+
+section#postalcode button[type="submit"]{
+    background-color: var(--verde);
+    padding: 20px 15px 20px 15px;
+    border-radius: 25px;
+}
+div.send{
+    margin-left: 40px
 }

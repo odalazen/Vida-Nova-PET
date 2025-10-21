@@ -13,23 +13,93 @@
     <header>
         <img class="site-logo" src="img/logo.png"
             alt="Logotipo do site que consiste em uma pata de cachorro e um pássaro rodeando a frase Vida Nova Pet">
+        <!--Menu escondido para mobile-->
+        <button class="menu-toggle" aria-label="Abrir menu">
+            ☰
+        </button>
 
-        <nav>
+        <nav class="nav-links">
             <a href="#">INÍCIO</a>
             <a href="#">SOBRE</a>
             <a href="#">PROJETOS SOCIAIS</a>
             <a href="#" class="btn">CADASTRE-SE</a>
         </nav>
-    </header>
+        <!-- esconder-->
+        <script>
+            const toggleBtn = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
 
+            toggleBtn.addEventListener('click', () => {
+                const isOpen = navLinks.classList.toggle('active');
+                toggleBtn.classList.toggle('active');
+                toggleBtn.textContent = isOpen ? '✖' : '☰'; // troca o ícone
+            });
+        </script>
+
+
+
+    </header>
+    <!--Artigo principal-->
     <main>
         <article>
-            <h1>Vida Nova PET </h1> <h2>Transformando vidas, uma patinha de cada vez.</h2>
+            <h1 class="titulo">Vida Nova PET </h1>
+            <h2>Transformando vidas, uma patinha de cada vez.</h2>
+
             <div class="separador"></div>
+
             <p>Somos uma ONG dedicada ao resgate, acolhimento e cuidado de animais em situação de risco. Com amor,
                 responsabilidade e respeito, oferecemos a esses pets uma nova chance de ter um lar cheio de carinho.
                 Junte-se a nós nessa missão!</p>
+
+            <a href="#" class="btn" id="donate">SAIBA MAIS</a>
+
         </article>
+        <div class="separador-conteudo"></div>
+        <section id="postalcode">
+            <h2>ENCONTRE A UNIDADE MAIS PROXIMA DE VOCÊ</h1>
+                <form id="cepForm" action="#" method="post">
+                    <div class="input">
+                        <input type="text" id="cep" placeholder=" " required>
+                        <label for="cep">CEP/Postal Code</label>
+
+                        <script>
+                            document.getElementById('cep').addEventListener('input', function (e) {
+                                let value = e.target.value;
+                                // Remove tudo que não for número
+                                value = value.replace(/\D/g, '');
+                                // Adiciona a máscara do CEP
+                                if (value.length > 5) {
+                                    value = value.replace(/(\d{5})(\d)/, '$1-$2');
+                                }
+                                e.target.value = value;
+                            });
+
+                            // limita os caracteres a 9 (8 números + hífen)
+                            document.getElementById('cep').setAttribute('maxlength', '9');
+
+                            //impede a submissao do formulario caso o cep esteja incompleto
+                            document.getElementById('cepForm').addEventListener('submit', function (e) {
+                                const cepValue = document.getElementById('cep').value;
+                                if (cepValue.length < 9) {
+                                    e.preventDefault();
+                                    alert('Por favor, insira um CEP válido.');
+                                }
+                            });
+
+                            
+                        </script>
+                    </div>
+                    <div class="send">
+                        <button type="submit">Enviar</button>
+                    </div>
+
+                </form>
+
+        </section>
+        <br>
+
+
+
 
     </main>
 
