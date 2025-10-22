@@ -86,18 +86,83 @@
                                 }
                             });
 
-                            
+
                         </script>
                     </div>
                     <div class="send">
-                        <button type="submit">Enviar</button>
+                        <button id="send-cep" type="submit">Enviar</button>
                     </div>
 
                 </form>
 
         </section>
         <br>
+        <div class="separador-conteudo"></div>
+        <br>
 
+        <!--ARTICLE DEPOIS DO CONTEUDO INICIAL-->
+        <article id="doacao-contato">
+            <section class="doacao">
+                <h2>SUA AJUDA FAZ A DIFERENÇA</h2>
+                <p>Doe qualquer valor acima de R$1,00</p>
+                <form id="donateForm" action="#" method="post">
+                    <div class="input">
+                        <input type="text" id="donation-amount" placeholder=" " required>
+                        <label for="donation-amount">Valor (R$)</label>
+                    </div>
+                    <div class="send">
+                        <button id="send-donate" type="submit">Doar Agora</button>
+                    </div>
+
+                    <script>
+                        // máscara simples de moeda (PT-BR)
+                        const donationInput = document.getElementById('donation-amount');
+                        donationInput.addEventListener('input', function (e) {
+                            let v = e.target.value.replace(/\D/g, '');
+                            v = (v / 100).toFixed(2) + '';
+                            v = v.replace('.', ',');
+                            v = v.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+                            e.target.value = v;
+                        });
+
+                        document.getElementById('donateForm').addEventListener('submit', function (e) {
+                            const raw = document.getElementById('donation-amount').value;
+                            // converte formato '1.234,56' para número 1234.56
+                            const num = Number(raw.replace(/\./g, '').replace(',', '.'));
+                            if (isNaN(num) || num < 1) {
+                                e.preventDefault();
+                                alert('Insira um valor de doação válido (mínimo R$1,00).');
+                            }
+                        });
+                    </script>
+
+                </form>
+            </section>
+
+            <section class="contato">
+
+                <P id="junt"><strong>JUNTE-SE A NÓS</strong></P>
+                <h1>AJUDE ANIMAIS NO BRASIL INTEIRO</h1>
+                <p>O amor transforma — e no nosso abrigo, cada gesto de carinho faz toda a diferença.
+                    Ser voluntário é mais do que doar tempo: é oferecer esperança, companhia e cuidado aos cães que
+                    foram resgatados e agora esperam uma nova chance.
+
+                    Você pode ajudar de várias formas: participando dos resgates, auxiliando na limpeza e alimentação,
+                    contribuindo nos eventos de adoção ou simplesmente passando um tempo com os nossos peludos, levando
+                    alegria e confiança para quem mais precisa.
+
+                    Junte-se à nossa equipe e descubra o quanto é gratificante ver um rabinho balançando em sinal de
+                    gratidão. 💛
+                    Doe tempo, espalhe amor, mude vidas — inclusive a sua!</p><br>
+                    <div id="ligue">
+                        <p>Ligue para mais informações:</p>
+                    <h3>(51) 994025290</h3>
+                    </div>
+                <a href="#" class="btn" id="contact-us">COMO POSSO AJUDAR?</a>
+
+            </section>
+
+        </article>
 
 
 
