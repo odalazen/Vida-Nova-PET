@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
   --laranja: rgb(254, 179, 2);
-  --verde: rgb(118, 186, 0);
-  --azul: rgb(21, 0, 140);
+  --verde: rgb(150, 194, 74);
+  --azul: rgb(50, 148, 146);
   --branco: rgb(255, 255, 255);
 }
 
@@ -11,10 +13,21 @@
   border: 0;
 }
 
+/* fallback: evitar scroll lateral indesejado */
+html, body {
+  max-width: 100%;
+}
+
 html {
   font-size: 1em;
 }
 
+p{font-family: "Roboto", sans-serif;}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
 .separador {
   margin-top: 5%;
 }
@@ -22,6 +35,8 @@ html {
 .separador-conteudo {
   margin-top: 12%
 }
+
+
 
 /*CONFIGURAÇÃO DO HEADER*/
 header {
@@ -81,7 +96,7 @@ nav a:hover {
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
-    margin-right: 50px;
+    padding-right: 16px;
     color: var(--laranja);
     z-index: 1;
   }
@@ -175,16 +190,117 @@ nav a:hover {
 /*BOTÃO DA LINHA 160*/
 .btn#contact-us {
   position: relative;
-  transform: translate(220px, -50px);
   text-decoration: none;
   
   
 }
 
+
 img.site-logo {
   width: 140px;
   height: 140px;
   padding-left: 5%;
+}
+
+.img-site{
+  /* não forçar 100% da largura do body;
+     permitir que o elemento respeite o tamanho do container pai */
+  max-width: 100%;
+  width: auto;
+  height: auto;
+
+}
+
+
+
+aside.projetos h2{
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 7px;
+  font-size: 3em;
+  color: var(--laranja);
+  
+
+}
+
+a.a-btn{
+  font-family: "Roboto", sans-serif;
+   display: block;
+   margin: 0 auto;
+   width: 71.3%;
+  transition: ease 0.4s;
+   padding: 20px 20px 20px 20px;
+    background-color: var(--laranja);
+    font-size: 1.2em;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  a.a-btn:hover{
+    background-color: rgb(254, 179, 2);
+    color: white;
+    font-size: 1.22em;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.193);
+    
+  }
+
+/*trabalhando com grids*/
+.grid-projetos{
+
+    padding-top: 30px;
+    background-color: rgb(255, 255, 255);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    max-width: 1060px;
+    margin: auto;
+    gap: 100px;
+    background-color: var(--verde);
+    padding: 40px;
+    
+    
+}
+
+    .grid div {
+        background-color: white;
+        text-align: center;
+        padding: 1px;
+        padding: 20px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.684);
+        
+    }
+
+    .grid div p{
+        padding: 15px;
+        line-height: 20px;
+        font-size: 1.2em;
+        color: #777;
+        
+    }
+
+    /*GRIDS PARA MOBILE*/
+
+    @media(min-width:0px) and (max-width:800px) {
+    .grid-conteudo {
+        background-color: white;
+        padding-top: 90px;
+    }
+
+    .grid {
+        display: grid;
+
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        max-width: 1024px;
+        margin: auto;
+        gap: 4px;
+    }
+
+    .grid div {
+        text-align: center;
+        padding: 1px;
+    }
 }
 
 /*IMAGEM DE FUNDO NO BODY*/
@@ -217,14 +333,13 @@ article {
 }
 
 article#doacao-contato {
-  border-radius: 0px;
+  box-sizing: border-box;
   width: 100%;
   max-width: 97%;
-  margin: 0;
+  margin: 0 auto;
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: row;
-  /* alinha horizontalmente */
   gap: 60px;
   padding: 20px;
   min-height: 300px;
@@ -246,12 +361,10 @@ article#doacao-contato .doacao {
   gap: 12px;
 }
 
+
 section.doacao h2 {
-  display: block;
   margin: 0 auto;
-  margin-top: 0px;
-  width: 60%;
-  align-items: center;
+  width: 80%;
   font-size: 2em;
   line-height: 35px;
   font-family: sans-serif;
@@ -259,6 +372,15 @@ section.doacao h2 {
   word-spacing: 7px;
   letter-spacing: 3px;
   
+}
+
+@media (max-width: 768px) {
+
+  section.doacao h2 {
+    font-size: 1.5em;
+    width: 100%;
+    line-height: 28px;
+  }
 }
 
 section.doacao p {
@@ -368,13 +490,6 @@ article#doacao-contato .contato {
   article#doacao-contato {
     flex-direction: column;
   }
-
-  article#doacao-contato .doacao,
-  article#doacao-contato .contato {
-    flex: none;
-    width: 90%;
-    padding: 10px;
-  }
 }
 
 article .titulo {
@@ -407,9 +522,9 @@ article .titulo {
 
 section#postalcode {
   background-color: var(--laranja);
-
+box-sizing: border-box;
   width: 90%;
-  height: 100px;
+  height: 200px;
  
   display: flex;
   align-items: center;
@@ -494,7 +609,6 @@ section#postalcode button[type="submit"] {
   padding-right: 30px;
 }
 
-/* removed id=input-dnt which conflicted with global .input styles */
 
 .input input {
   border-radius: 40px;
@@ -532,8 +646,8 @@ section#postalcode button[type="submit"] {
 }
 
 #cep {
-  padding: 8px 12px;
-  margin-right: 30px;
+  padding: 20px 12px;
+  margin-left: 12px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -558,3 +672,4 @@ div.send {
   cursor: pointer;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
