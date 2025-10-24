@@ -46,6 +46,7 @@ header {
   display: flex;
   justify-content: space-between;
   z-index: 1;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 /*BARRA DE NAVEGAÇÃO*/
@@ -86,10 +87,12 @@ nav a:hover {
   font-size: 18px;
 }
 
-.nav-links .btn {
-  font-size: 18px;
-  text-decoration: none;
-  color: black;
+@media (min-width: 769px) {
+  article{
+    padding-top:100px;
+  }
+
+  
 }
 
 /* mostra o botão no mobile */
@@ -97,7 +100,7 @@ nav a:hover {
   .menu-toggle {
     display: block;
     padding-right: 16px;
-    color: var(--laranja);
+    color: var(--azul);
     z-index: 1;
   }
 
@@ -148,8 +151,8 @@ nav a:hover {
   color: white;
   display: block;
   width: 200px;
-  background-color: var(--verde);
-  padding: 7px 10px 7px 10px;
+  background-color: rgb(255, 187, 1);
+  padding: 10px 10px 10px 10px;
   border-radius: 20px;
   font-size: 1.2em;
   margin: auto;
@@ -159,10 +162,11 @@ nav a:hover {
 }
 
 .btn:hover {
-  background: rgb(255, 166, 0);
+  background: var(--verde);
   color: white;
   font-size: 1.22em;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.193);
+  text-shadow: 2px 2px 2px rgba(255, 205, 4, 0.475);
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.029);
 }
 
 .btn#donate {
@@ -216,18 +220,58 @@ img.site-logo {
 aside.projetos h2{
   text-align: center;
   font-family: "Roboto", sans-serif;
-  letter-spacing: 7px;
-  font-size: 3em;
-  color: var(--laranja);
-  
+  color: var(--verde);
+box-sizing: border-box;
+}
 
+aside.projetos .titulo-h2 #equipe-h2{
+  margin-left: 19px;
+  color: var(--laranja);
+}
+
+@media (max-width: 768px) {
+  aside.projetos .titulo-h2 #equipe-h2{
+    padding-right: 20px;
+  }
+
+  aside.projetos .grid div p{
+    font-size: 0.9em;
+  }
+}
+
+.titulo-h2{
+
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 7px;
+  font-size: 2em;
+  color: var(--laranja);
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+}
+#equipe-h2{
+  margin-left: 10px;
+  color: var(--verde);
+}
+
+@media (max-width: 768px) {
+  .titulo-h2{
+    font-size: 1.2em;
+    display: block;
+    margin-top: 100px;
+  }
+    
+  
 }
 
 a.a-btn{
   font-family: "Roboto", sans-serif;
    display: block;
    margin: 0 auto;
-   width: 71.3%;
+   width: 72.7%;
   transition: ease 0.4s;
    padding: 20px 20px 20px 20px;
     background-color: var(--laranja);
@@ -244,6 +288,12 @@ a.a-btn{
     
   }
 
+@media (max-width: 1400px) {
+    a.a-btn{
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
 /*trabalhando com grids*/
 .grid-projetos{
 
@@ -280,6 +330,85 @@ a.a-btn{
         
     }
 
+
+
+    /*GRID EQUIPE*/
+
+section.grid-equipe .grid{
+    background-color: white;
+}
+
+section.grid-equipe .img-site{
+    border-radius: 50%;
+    object-fit: cover;
+    width: 250px;
+    height: 250px;
+}
+
+section.grid-equipe .grid div{
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+}
+
+section.grid-equipe .grid div .img-site{
+  width: 170px;
+  height: 170px;
+  flex: 0 0 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+section.grid-equipe .grid div p{
+  margin: 0;
+  text-align: left;
+  flex: 1 1 auto;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+section.grid-equipe .grid div p strong{
+  font-size: 1.5em;
+  color: var(--verde);
+
+}
+
+section.grid-equipe .grid div p.nome{
+
+  color: var(--laranja);
+}
+
+@media (max-width: 768px){
+  section.grid-equipe .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        max-width: 1024px;
+        padding: 16px;
+        margin: 0 auto;
+        gap: 20px;
+    }
+
+
+  section.grid-equipe .grid div .img-site{
+    width: 100px;
+    height: 100px;
+  }
+section.grid-equipe .grid div{
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  section.grid-equipe .grid div p{
+    text-align: center;
+    font-size: 0.9em;
+  }
+}
+
+
     /*GRIDS PARA MOBILE*/
 
     @media(min-width:0px) and (max-width:800px) {
@@ -294,13 +423,15 @@ a.a-btn{
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         max-width: 1024px;
         margin: auto;
-        gap: 4px;
+        gap: 20px;
     }
 
     .grid div {
         text-align: center;
         padding: 1px;
     }
+
+    
 }
 
 /*IMAGEM DE FUNDO NO BODY*/

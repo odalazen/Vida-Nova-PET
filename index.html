@@ -41,6 +41,7 @@
     </header>
     <!--Artigo principal-->
     <main>
+        <br>
         <article>
             <h1 class="titulo">Vida Nova PET </h1>
             <h2>Transformando vidas, uma patinha de cada vez.</h2>
@@ -55,46 +56,46 @@
 
         </article>
         <div class="separador-conteudo"></div>
-        
+
         <section id="postalcode">
             <h2>ENCONTRE A UNIDADE MAIS PROXIMA DE VOCÊ</h2>
-                <form id="cepForm" action="#" method="post">
-                    <div class="input">
-                        <input type="text" id="cep" placeholder=" " required>
-                        <label for="cep">CEP/Postal Code</label>
+            <form id="cepForm" action="#" method="post">
+                <div class="input">
+                    <input type="text" id="cep" placeholder=" " required>
+                    <label for="cep">CEP/Postal Code</label>
 
-                        <script>
-                            document.getElementById('cep').addEventListener('input', function (e) {
-                                let value = e.target.value;
-                                // Remove tudo que não for número
-                                value = value.replace(/\D/g, '');
-                                // Adiciona a máscara do CEP
-                                if (value.length > 5) {
-                                    value = value.replace(/(\d{5})(\d)/, '$1-$2');
-                                }
-                                e.target.value = value;
-                            });
+                    <script>
+                        document.getElementById('cep').addEventListener('input', function (e) {
+                            let value = e.target.value;
+                            // Remove tudo que não for número
+                            value = value.replace(/\D/g, '');
+                            // Adiciona a máscara do CEP
+                            if (value.length > 5) {
+                                value = value.replace(/(\d{5})(\d)/, '$1-$2');
+                            }
+                            e.target.value = value;
+                        });
 
-                            // limita os caracteres a 9 (8 números + hífen)
-                            document.getElementById('cep').setAttribute('maxlength', '9');
+                        // limita os caracteres a 9 (8 números + hífen)
+                        document.getElementById('cep').setAttribute('maxlength', '9');
 
-                            //impede a submissao do formulario caso o cep esteja incompleto
-                            document.getElementById('cepForm').addEventListener('submit', function (e) {
-                                const cepValue = document.getElementById('cep').value;
-                                if (cepValue.length < 9) {
-                                    e.preventDefault();
-                                    alert('Por favor, insira um CEP válido.');
-                                }
-                            });
+                        //impede a submissao do formulario caso o cep esteja incompleto
+                        document.getElementById('cepForm').addEventListener('submit', function (e) {
+                            const cepValue = document.getElementById('cep').value;
+                            if (cepValue.length < 9) {
+                                e.preventDefault();
+                                alert('Por favor, insira um CEP válido.');
+                            }
+                        });
 
 
-                        </script>
-                    </div>
-                    <div class="send">
-                        <button id="send-cep" type="submit">Enviar</button>
-                    </div>
+                    </script>
+                </div>
+                <div class="send">
+                    <button id="send-cep" type="submit">Enviar</button>
+                </div>
 
-                </form>
+            </form>
 
         </section>
         <br>
@@ -159,7 +160,7 @@
                     <p>Ligue para mais informações:</p>
                     <h3>(51) 994025290</h3>
                 </div>
-                
+
 
             </section>
 
@@ -169,21 +170,25 @@
     <div class="separador-conteudo"></div>
     <!--projetos-->
     <aside class="projetos">
-        <h2>NOSSOS PROJETOS SOCIAIS</h2>
+        <div class="titulo-h2">
+        <h2>CONHEÇA NOSSOS <h2 id="equipe-h2">PROJETOS</h2></h2>
+        </div>
         <br><br>
-                    
+
         <section class="grid-projetos">
-            <div class="grid">  
+            <div class="grid">
 
                 <a href="">
                     <div>
-                        <img class="img-site" src="img/adocao.webp" alt="Duas pessoas sorridentes com um cachorro ao centro da imagem adotado">
+                        <img class="img-site" src="img/adocao.webp"
+                            alt="Duas pessoas sorridentes com um cachorro ao centro da imagem adotado">
                         <p>
-                            <strong>Campanhas de Adoção</strong><br><br> Organizamos eventos regulares para encontrar lares
+                            <strong>Campanhas de Adoção</strong><br><br> Organizamos eventos regulares para encontrar
+                            lares
                             amorosos
                             para
                             nossos animais resgatados, promovendo a adoção responsável e consciente.
-                    
+
                         </p>
                     </div>
                 </a>
@@ -202,11 +207,13 @@
 
                 <a href="">
                     <div>
-                        <img class="img-site" src="img/castracao.webp" alt="Duas pessoas agachadas acariciando dois cachorros que estão olhando para a câmera">
+                        <img class="img-site" src="img/castracao.webp"
+                            alt="Duas pessoas agachadas acariciando dois cachorros que estão olhando para a câmera">
                         <p>
                             <strong>Programa de Castração Gratuita</strong><br><br>Oferecemos serviços de castração para
                             animais
-                            de famílias de baixa renda, ajudando a controlar a população de animais de rua e promovendo a
+                            de famílias de baixa renda, ajudando a controlar a população de animais de rua e promovendo
+                            a
                             saúde
                             animal.
                         </p>
@@ -215,21 +222,88 @@
 
                 <a href="">
                     <div>
-                        <img class="img-site" src="img/resgate.webp" alt="Uma mulher agachada segurando a pata de um cachorro que está no chão">
+                        <img class="img-site" src="img/resgate.webp"
+                            alt="Uma mulher agachada segurando a pata de um cachorro que está no chão">
                         <p>
-                            <strong>Resgate e Reabilitação</strong><br><br> Atuamos no resgate de animais em situação de risco,
-                            oferecendo cuidados veterinários, reabilitação e um ambiente seguro até que possam ser adotados.
+                            <strong>Resgate e Reabilitação</strong><br><br> Atuamos no resgate de animais em situação de
+                            risco,
+                            oferecendo cuidados veterinários, reabilitação e um ambiente seguro até que possam ser
+                            adotados.
                         </p>
-                    
+
                     </div>
                 </a>
-                
+
                 <br>
             </div>
             <a href="#" class="a-btn">Veja mais projetos e saiba como nos apoiar</a>
         </section>
     </aside>
+    <div class="separador-conteudo"></div>
+    <aside>
+        <div class="titulo-h2">
+        <h2>CONHEÇA NOSSA <h2 id="equipe-h2">EQUIPE</h2></h2>
+        </div>
+        <br><br>
+        <section class="grid-equipe">
+            <div class="grid">
+                <div>
+                    <img class="img-site" src="img/equipe1.webp"
+                        alt="Foto de uma mulher sorridente de cabelos cacheados e óculos">
+                      <p>
+                        <strong>
+                            João Silva
+                        </strong><br><br> Fundador e Diretor<br> Com uma paixão profunda pelos animais, João fundou a
+                        ONG para oferecer um refúgio seguro e amoroso para pets em situação de risco.</p>
+                    
+                </div>
 
+                <div>
+                    <img class="img-site" src="img/equipe2.webp"
+                        alt="Foto de um homem sorridente de cabelos curtos e barba">
+                    <p>
+                        <strong>
+                            João Pereira
+                        </strong><br><br>
+                            Veterinário Chefe<br> Com mais de 15 anos de experiência,
+                            João
+                            lidera
+                            a equipe veterinária, garantindo que todos os animais recebam os melhores cuidados possíveis.
+                        </p>
+                    
+                </div>
+
+                <div>
+                    <img class="img-site" src="img/equipe3.webp"
+                        alt="Foto de uma mulher sorridente de cabelos lisos e longos">
+                    <p>
+                        <strong>
+                            Ana Costa
+                        </strong><br><br>
+                            Coordenadora de Voluntários<br> Ana organiza e treina nossa
+                            equipe
+                            de
+                            voluntários, assegurando que cada um tenha uma experiência gratificante enquanto ajuda nossos
+                            pets.
+                        </p>
+                </div>
+
+                <div>
+                    <img class="img-site" src="img/equipe4.webp"
+                        alt="Foto de um homem sorridente de cabelos curtos e óculos">
+                    <p>
+                        <strong>Carlos Mendes</strong><br><br> 
+                            Especialista em Resgate<br> Carlos é responsável por
+                            coordenar
+                            as
+                            operações de resgate, garantindo a segurança e o bem-estar dos animais durante todo o processo.
+                        </p>
+                </div>
+            </div>
+
+            <br>
+
+    </aside>
 
 
 
