@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --laranja: rgb(254, 179, 2);
+  --verde: rgb(150, 194, 74);
+  --azul: rgb(50, 148, 146);
+  --branco: rgb(255, 255, 255);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+/* fallback: evitar scroll lateral indesejado */
+html, body {
+  max-width: 100%;
+}
+
+html {
+  font-size: 1em;
+  scroll-behavior: smooth;
+}
+
+p{font-family: "Roboto", sans-serif;}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+/*CONFIGURAÇÃO DE BOTOES*/
+.btn {
+  color: white;
+  background-color: var(--verde);
+  padding: 10px 10px 10px 10px;
+  border-radius: 20px;
+  font-size: 1.2em;
+  text-align: center;
+  transition: 0.4s ease;
+  background-color: #333;    
+}
+
+.btn:hover {
+  background: var(--verde);
+  color: white;
+  font-size: 1.22em;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.029);
+  transform: translatey(-1px);
+  background-color: yellowgreen;
+}
+
+body {
+background-image: url(img/cachorro.jpg);
+background-position: center;
+background-size: cover;
+}
+
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box; /* garante comportamento previsível de largura */
+}
+/* ...existing code... */
+
+/* ===== estilos do formulário de cadastro ===== */
+.cadastro-container{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.cadastro-card{
+  width: 100%;
+  max-width: 860px;
+  background: rgba(255, 255, 255, 0.774);
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  padding: 28px;
+  position: relative;
+}
+
+.close-btn{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: transparent;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  border-radius: 8px;
+  transition: background 0.18s ease, color 0.18s ease;
+  box-shadow: none;
+
+}
+
+.close-btn:hover,
+.close-btn:focus{
+  background: rgba(0,0,0,0.06);
+  color: #000;
+  outline: none;
+}
+
+@media (max-width: 480px) {
+  .close-btn{
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+}
+
+
+.cadastro-card h1{
+  margin: 0 0 14px 0;
+  font-size: 2rem;
+  text-align: center;
+  color: var(--verde);
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.452);
+  text-transform: uppercase;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 18px;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.95rem;
+}
+
+.form-group.full{
+  grid-column: 1 / -1;
+}
+
+.form-group span{
+  color: black;
+  font-weight: 900;
+}
+
+.form-group input,
+.form-group select{
+  padding: 10px 12px;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 10px;
+  background: #ffffffdf;
+  font-size: 1rem;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+  box-shadow: 0 0 0 3px rgba(50,148,146,0.08);
+  border-color: var(--azul);
+}
+
+.form-actions{
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+/* botão já definido .btn no arquivo base; ajustar tamanho aqui */
+.btn{
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* responsividade */
+@media (max-width: 800px){
+  .form-grid{ grid-template-columns: 1fr; }
+  .cadastro-card{ padding: 20px; }
+  .btn{ width: 100%; }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cadastro - Vida Nova Pet</title>
+  <link rel="stylesheet" href="style-cadastro.css">
+</head>
+
+<body>
+  <div class="cadastro-container">
+    <div class="cadastro-card" role="region" aria-labelledby="cad-title">
+      <a href="index.html" class="close-btn" aria-label="Voltar para a página inicial">✖</a>
+      <h1 id="cad-title">Cadastro</h1>
+
+      <form id="cadastroForm" novalidate>
+        <div class="form-grid">
+          <label class="form-group">
+            <span>Nome completo</span>
+            <input type="text" name="nome" required autocomplete="name" />
+          </label>
+
+          <label class="form-group">
+            <span>E-mail</span>
+            <input type="email" name="email" required autocomplete="email" />
+          </label>
+
+          <label class="form-group">
+            <span>CPF</span>
+            <input id="cpf" type="text" name="cpf" inputmode="numeric" maxlength="14" required />
+          </label>
+
+          <label class="form-group">
+            <span>Telefone</span>
+            <input id="telefone" type="tel" name="telefone" inputmode="tel" maxlength="15" required />
+          </label>
+
+          <label class="form-group">
+            <span>Data de nascimento</span>
+            <input type="date" name="nascimento" required />
+          </label>
+
+          <label class="form-group full">
+            <span>Endereço</span>
+            <input type="text" name="endereco" required autocomplete="street-address" />
+          </label>
+
+          <label class="form-group">
+            <span>CEP</span>
+            <input id="cep" type="text" name="cep" inputmode="numeric" maxlength="9" required />
+          </label>
+
+          <label class="form-group">
+            <span>Cidade</span>
+            <input type="text" name="cidade" required />
+          </label>
+
+          <label class="form-group">
+            <span>Estado</span>
+            <select name="estado" required>
+              <option value="" disabled selected>UF</option>
+              <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+              <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+              <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+              <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+              <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+              <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+              <option>SP</option><option>SE</option><option>TO</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Máscaras simples: CEP, CPF, Telefone
+    function setMask(input, fn) {
+      input.addEventListener('input', function(e){
+        const pos = this.selectionStart || 0;
+        this.value = fn(this.value);
+        // tenta manter o caret no fim quando necessário
+        this.selectionStart = this.selectionEnd = this.value.length;
+      }, { passive: true });
+    }
+
+    function maskCEP(v){
+      v = v.replace(/\D/g,'').slice(0,8);
+      if (v.length > 5) return v.slice(0,5) + '-' + v.slice(5);
+      return v;
+    }
+
+    function maskCPF(v){
+      v = v.replace(/\D/g,'').slice(0,11);
+      return v
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    }
+
+    function maskPhone(v){
+      v = v.replace(/\D/g,'').slice(0,11);
+      if (v.length <= 2) return v;
+      if (v.length <= 6) return '(' + v.slice(0,2) + ') ' + v.slice(2);
+      if (v.length <= 10) return '(' + v.slice(0,2) + ') ' + v.slice(2,6) + '-' + v.slice(6);
+      // 11 dígitos (celular com 9) -> (XX) 9XXXX-XXXX
+      return '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+      setMask(document.getElementById('cep'), maskCEP);
+      setMask(document.getElementById('cpf'), maskCPF);
+      setMask(document.getElementById('telefone'), maskPhone);
+
+      document.getElementById('cadastroForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        // validação mínima
+        const cpf = document.getElementById('cpf').value.replace(/\D/g,'');
+        const telefone = document.getElementById('telefone').value.replace(/\D/g,'');
+        const cep = document.getElementById('cep').value.replace(/\D/g,'');
+        if (cpf.length !== 11) { alert('CPF inválido'); return; }
+        if (telefone.length < 10) { alert('Telefone inválido'); return; }
+        if (cep.length !== 8) { alert('CEP inválido'); return; }
+        // Aqui envie por fetch ou prossiga conforme necessário
+        alert('Formulário válido — insira lógica de envio.');
+      });
+    });
+  </script>
+</body>
+</html>
