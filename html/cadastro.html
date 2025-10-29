@@ -4,13 +4,51 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Cadastro - Vida Nova Pet</title>
-  <link rel="stylesheet" href="style-cadastro.css">
+  <link rel="stylesheet" href="../css/style-cadastro.css">
+  <link rel="stylesheet" href="../css/acessibilidade.css">
 </head>
 
 <body>
+
+<!-- WIDGET -->
+  <div class="accessibility-widget" aria-hidden="false">
+    <button class="aw-toggle" id="aw-open" aria-expanded="false" aria-controls="aw-panel" title="Abrir opções de acessibilidade">
+      ♿ <span class="sr-only">Abrir opções de acessibilidade</span>
+    </button>
+
+    <div class="aw-panel" id="aw-panel" role="region" aria-label="Controles de acessibilidade" aria-hidden="true">
+      <div class="aw-controls" style="align-items:center; justify-content:space-between;">
+        <strong>Acessibilidade</strong>
+        <button id="aw-close" class="aw-btn small" title="Fechar painel" aria-label="Fechar painel">✕</button>
+      </div>
+
+      <button id="contrast-toggle" class="aw-btn" aria-pressed="false" aria-live="polite">
+        <span>Alto contraste</span>
+        <span class="aw-indicator" aria-hidden="true">Off</span>
+      </button>
+
+      <div style="display:flex;gap:.4rem;align-items:center;justify-content:space-between;">
+        <span>Fonte</span>
+        <div style="display:flex;gap:.4rem;">
+          <button id="font-decrease" class="aw-btn small" title="Diminuir fonte" aria-label="Diminuir fonte">A−</button>
+          <button id="font-reset" class="aw-btn small" title="Tamanho padrão" aria-label="Restaurar fonte">A</button>
+          <button id="font-increase" class="aw-btn small" title="Aumentar fonte" aria-label="Aumentar fonte">A+</button>
+        </div>
+      </div>
+
+      <div>
+        <button id="aw-reset-all" class="aw-btn" title="Restaurar todas as configurações de acessibilidade">Restaurar padrões</button>
+      </div>
+
+      <div style="font-size:0.8rem;color:#666;padding-top:.2rem;">
+        <span id="aw-status" aria-live="polite"></span>
+      </div>
+    </div>
+  </div>
+  
   <div class="cadastro-container">
     <div class="cadastro-card" role="region" aria-labelledby="cad-title">
-      <a href="index.html" class="close-btn" aria-label="Voltar para a página inicial">✖</a>
+      <a href="../index.html" class="close-btn" aria-label="Voltar para a página inicial">✖</a>
       <h1 id="cad-title">Cadastro</h1>
 
       <form id="cadastroForm" novalidate>
@@ -77,58 +115,9 @@
     </div>
   </div>
 
-  <script>
-    // Máscaras simples: CEP, CPF, Telefone
-    function setMask(input, fn) {
-      input.addEventListener('input', function(e){
-        const pos = this.selectionStart || 0;
-        this.value = fn(this.value);
-        // tenta manter o caret no fim quando necessário
-        this.selectionStart = this.selectionEnd = this.value.length;
-      }, { passive: true });
-    }
+  
 
-    function maskCEP(v){
-      v = v.replace(/\D/g,'').slice(0,8);
-      if (v.length > 5) return v.slice(0,5) + '-' + v.slice(5);
-      return v;
-    }
-
-    function maskCPF(v){
-      v = v.replace(/\D/g,'').slice(0,11);
-      return v
-        .replace(/(\d{3})(\d)/, '$1.$2')
-        .replace(/(\d{3})(\d)/, '$1.$2')
-        .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-    }
-
-    function maskPhone(v){
-      v = v.replace(/\D/g,'').slice(0,11);
-      if (v.length <= 2) return v;
-      if (v.length <= 6) return '(' + v.slice(0,2) + ') ' + v.slice(2);
-      if (v.length <= 10) return '(' + v.slice(0,2) + ') ' + v.slice(2,6) + '-' + v.slice(6);
-      // 11 dígitos (celular com 9) -> (XX) 9XXXX-XXXX
-      return '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
-    }
-
-    document.addEventListener('DOMContentLoaded', function(){
-      setMask(document.getElementById('cep'), maskCEP);
-      setMask(document.getElementById('cpf'), maskCPF);
-      setMask(document.getElementById('telefone'), maskPhone);
-
-      document.getElementById('cadastroForm').addEventListener('submit', function(e){
-        e.preventDefault();
-        // validação mínima
-        const cpf = document.getElementById('cpf').value.replace(/\D/g,'');
-        const telefone = document.getElementById('telefone').value.replace(/\D/g,'');
-        const cep = document.getElementById('cep').value.replace(/\D/g,'');
-        if (cpf.length !== 11) { alert('CPF inválido'); return; }
-        if (telefone.length < 10) { alert('Telefone inválido'); return; }
-        if (cep.length !== 8) { alert('CEP inválido'); return; }
-        // Aqui envie por fetch ou prossiga conforme necessário
-        alert('Formulário válido — insira lógica de envio.');
-      });
-    });
-  </script>
+  <script src="../js/cadastro.js"></script>
+  <script src="../js/acessibilidade.js"></script>
 </body>
 </html>

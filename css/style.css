@@ -5,6 +5,12 @@
   --verde: rgb(150, 194, 74);
   --azul: rgb(50, 148, 146);
   --branco: rgb(255, 255, 255);
+
+  --bg: #ffffff;
+      --fg: #111111;
+      --accent: #0b76ef;
+      --font-scale: 100; /* percent */
+      --base-font-size: 16px;
 }
 
 * {
@@ -21,6 +27,7 @@ html, body {
 html {
   font-size: 1em;
   scroll-behavior: smooth;
+  font-size: calc(var(--base-font-size) * (var(--font-scale) / 100));
 }
 
 p{font-family: "Roboto", sans-serif;}
@@ -225,13 +232,13 @@ aside.projetos h2{
 box-sizing: border-box;
 }
 
-aside.projetos .titulo-h2 #equipe-h2{
+aside.projetos .titulo-h2 .equipe-h2{
   margin-left: 19px;
   color: var(--laranja);
 }
 
 @media (max-width: 768px) {
-  aside.projetos .titulo-h2 #equipe-h2{
+  aside.projetos .titulo-h2 .equipe-h2{
     padding-right: 20px;
   }
 
@@ -253,7 +260,7 @@ aside.projetos .titulo-h2 #equipe-h2{
   align-items: center;
   align-items: center;
 }
-#equipe-h2{
+.equipe-h2{
   margin-left: 10px;
   color: var(--verde);
 }
@@ -437,7 +444,7 @@ section.grid-equipe .grid div{
 
 /*IMAGEM DE FUNDO NO BODY*/
 body {
-  background-image: url(img/imagem-background.jpg);
+  background-image: url("../img/imagem-background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

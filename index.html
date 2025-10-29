@@ -5,14 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/acessibilidade.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+     
     <title>Vida Nova Pet</title>
 </head>
 
 <body>
     <header>
         <img class="site-logo" src="img/logo.png"
-            alt="Logotipo do site que consiste em uma pata de cachorro e um pássaro rodeando a frase Vida Nova Pet">
+            alt="Logotipo do site que consiste em uma pata de cachorro e um pássaro rodeando a frase Vida Nova Pet" loading="lazy">
         <!--Menu escondido para mobile-->
         <button class="menu-toggle" aria-label="Abrir menu">
             ☰
@@ -21,26 +24,48 @@
         <nav class="nav-links">
             <a href="#">INÍCIO</a>
             <a href="#">SOBRE</a>
-            <a href="#">PROJETOS SOCIAIS</a>
-            <a href="cadastro.html" class="btn">CADASTRE-SE</a>
+            <a href="./html/projetos.html">PROJETOS SOCIAIS</a>
+            <a href="./html/cadastro.html" class="btn">CADASTRE-SE</a>
         </nav>
-        <!-- esconder-->
-        <script>
-            const toggleBtn = document.querySelector('.menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
-
-            toggleBtn.addEventListener('click', () => {
-                const isOpen = navLinks.classList.toggle('active');
-                toggleBtn.classList.toggle('active');
-                toggleBtn.textContent = isOpen ? '✖' : '☰'; // troca o ícone
-            });
-        </script>
-
-
-
     </header>
     <!--Artigo principal-->
     <main>
+
+        <div class="accessibility-widget" aria-hidden="false">
+    <button class="aw-toggle" id="aw-open" aria-expanded="false" aria-controls="aw-panel" title="Abrir opções de acessibilidade">
+      ♿ <span class="sr-only">Abrir opções de acessibilidade</span>
+    </button>
+
+    <div class="aw-panel" id="aw-panel" role="region" aria-label="Controles de acessibilidade" aria-hidden="true">
+      <div class="aw-controls" style="align-items:center; justify-content:space-between;">
+        <strong>Acessibilidade</strong>
+        <button id="aw-close" class="aw-btn small" title="Fechar painel" aria-label="Fechar painel">✕</button>
+      </div>
+
+      <button id="contrast-toggle" class="aw-btn" aria-pressed="false" aria-live="polite">
+        <span>Alto contraste</span>
+        <span class="aw-indicator" aria-hidden="true">Off</span>
+      </button>
+
+      <div style="display:flex;gap:.4rem;align-items:center;justify-content:space-between;">
+        <span>Fonte</span>
+        <div style="display:flex;gap:.4rem;">
+          <button id="font-decrease" class="aw-btn small" title="Diminuir fonte" aria-label="Diminuir fonte">A−</button>
+          <button id="font-reset" class="aw-btn small" title="Tamanho padrão" aria-label="Restaurar fonte">A</button>
+          <button id="font-increase" class="aw-btn small" title="Aumentar fonte" aria-label="Aumentar fonte">A+</button>
+        </div>
+      </div>
+
+      <div>
+        <button id="aw-reset-all" class="aw-btn" title="Restaurar todas as configurações de acessibilidade">Restaurar padrões</button>
+      </div>
+
+      <div style="font-size:0.8rem;color:#666;padding-top:.2rem;">
+        <span id="aw-status" aria-live="polite"></span>
+      </div>
+    </div>
+  </div>
+
         <br>
         <article>
             <h1 class="titulo">Vida Nova PET </h1>
@@ -63,33 +88,6 @@
                 <div class="input">
                     <input type="text" id="cep" placeholder=" " required>
                     <label for="cep">CEP/Postal Code</label>
-
-                    <script>
-                        document.getElementById('cep').addEventListener('input', function (e) {
-                            let value = e.target.value;
-                            // Remove tudo que não for número
-                            value = value.replace(/\D/g, '');
-                            // Adiciona a máscara do CEP
-                            if (value.length > 5) {
-                                value = value.replace(/(\d{5})(\d)/, '$1-$2');
-                            }
-                            e.target.value = value;
-                        });
-
-                        // limita os caracteres a 9 (8 números + hífen)
-                        document.getElementById('cep').setAttribute('maxlength', '9');
-
-                        //impede a submissao do formulario caso o cep esteja incompleto
-                        document.getElementById('cepForm').addEventListener('submit', function (e) {
-                            const cepValue = document.getElementById('cep').value;
-                            if (cepValue.length < 9) {
-                                e.preventDefault();
-                                alert('Por favor, insira um CEP válido.');
-                            }
-                        });
-
-
-                    </script>
                 </div>
                 <div class="send">
                     <button id="send-cep" type="submit">Enviar</button>
@@ -116,35 +114,13 @@
                         <button id="send-donate" type="submit">Doar Agora</button>
                     </div>
 
-                    <script>
-                        // máscara simples de moeda (PT-BR)
-                        const donationInput = document.getElementById('donation-amount');
-                        donationInput.addEventListener('input', function (e) {
-                            let v = e.target.value.replace(/\D/g, '');
-                            v = (v / 100).toFixed(2) + '';
-                            v = v.replace('.', ',');
-                            v = v.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-                            e.target.value = v;
-                        });
-
-                        document.getElementById('donateForm').addEventListener('submit', function (e) {
-                            const raw = document.getElementById('donation-amount').value;
-                            // converte formato '1.234,56' para número 1234.56
-                            const num = Number(raw.replace(/\./g, '').replace(',', '.'));
-                            if (isNaN(num) || num < 1) {
-                                e.preventDefault();
-                                alert('Insira um valor de doação válido (mínimo R$1,00).');
-                            }
-                        });
-                    </script>
-
                 </form>
             </section>
 
             <section class="contato">
 
                 <P id="junt"><strong>JUNTE-SE A NÓS</strong></P>
-                <h1>AJUDE ANIMAIS NO BRASIL INTEIRO</h1>
+                <h2>AJUDE ANIMAIS NO BRASIL INTEIRO</h2>
                 <p>O amor transforma — e no nosso abrigo, cada gesto de carinho faz toda a diferença.
                     Ser voluntário é mais do que doar tempo: é oferecer esperança, companhia e cuidado aos cães que
                     foram resgatados e agora esperam uma nova chance.
@@ -171,17 +147,17 @@
     <!--projetos-->
     <aside class="projetos">
         <div class="titulo-h2">
-        <h2>CONHEÇA NOSSOS <h2 id="equipe-h2">PROJETOS</h2></h2>
+        <h2>CONHEÇA NOSSOS </h2><h2 class="equipe-h2">PROJETOS</h2>
         </div>
         <br><br>
 
         <section class="grid-projetos">
             <div class="grid">
 
-                <a href="">
+                <a href="html/projetos.html">
                     <div>
                         <img class="img-site" src="img/adocao.webp"
-                            alt="Duas pessoas sorridentes com um cachorro ao centro da imagem adotado">
+                            alt="Duas pessoas sorridentes com um cachorro ao centro da imagem adotado" loading="lazy">
                         <p>
                             <strong>Campanhas de Adoção</strong><br><br> Organizamos eventos regulares para encontrar
                             lares
@@ -193,9 +169,9 @@
                     </div>
                 </a>
 
-                <a href="">
+                <a href="html/projetos.html">
                     <div>
-                        <img class="img-site" src="img/workshop.webp" alt="Mulher de camiseta verde palestrando">
+                        <img class="img-site" src="img/workshop.webp" alt="Mulher de camiseta verde palestrando" loading="lazy">
                         <p>
                             <strong>Educação Comunitária</strong><br><br> Realizamos workshops e palestras em escolas e
                             comunidades
@@ -205,10 +181,10 @@
                     </div>
                 </a>
 
-                <a href="">
+                <a href="html/projetos.html">
                     <div>
                         <img class="img-site" src="img/castracao.webp"
-                            alt="Duas pessoas agachadas acariciando dois cachorros que estão olhando para a câmera">
+                            alt="Duas pessoas agachadas acariciando dois cachorros que estão olhando para a câmera" loading="lazy">
                         <p>
                             <strong>Programa de Castração Gratuita</strong><br><br>Oferecemos serviços de castração para
                             animais
@@ -220,10 +196,10 @@
                     </div>
                 </a>
 
-                <a href="">
+                <a href="html/projetos.html">
                     <div>
                         <img class="img-site" src="img/resgate.webp"
-                            alt="Uma mulher agachada segurando a pata de um cachorro que está no chão">
+                            alt="Uma mulher agachada segurando a pata de um cachorro que está no chão" loading="lazy">
                         <p>
                             <strong>Resgate e Reabilitação</strong><br><br> Atuamos no resgate de animais em situação de
                             risco,
@@ -242,14 +218,14 @@
     <div class="separador-conteudo"></div>
     <aside>
         <div class="titulo-h2">
-        <h2>CONHEÇA NOSSA <h2 id="equipe-h2">EQUIPE</h2></h2>
+        <h2>CONHEÇA NOSSA </h2><h2 class="equipe-h2">EQUIPE</h2>
         </div>
         <br><br>
         <section class="grid-equipe">
             <div class="grid">
                 <div>
                     <img class="img-site" src="img/equipe1.webp"
-                        alt="Foto de uma mulher sorridente de cabelos cacheados e óculos">
+                        alt="Foto de uma mulher sorridente de cabelos cacheados e óculos" loading="lazy">
                       <p>
                         <strong>
                             João Silva
@@ -260,7 +236,7 @@
 
                 <div>
                     <img class="img-site" src="img/equipe2.webp"
-                        alt="Foto de um homem sorridente de cabelos curtos e barba">
+                        alt="Foto de um homem sorridente de cabelos curtos e barba" loading="lazy">
                     <p>
                         <strong>
                             João Pereira
@@ -275,7 +251,7 @@
 
                 <div>
                     <img class="img-site" src="img/equipe3.webp"
-                        alt="Foto de uma mulher sorridente de cabelos lisos e longos">
+                        alt="Foto de uma mulher sorridente de cabelos lisos e longos" loading="lazy">
                     <p>
                         <strong>
                             Ana Costa
@@ -290,7 +266,7 @@
 
                 <div>
                     <img class="img-site" src="img/equipe4.webp"
-                        alt="Foto de um homem sorridente de cabelos curtos e óculos">
+                        alt="Foto de um homem sorridente de cabelos curtos e óculos" loading="lazy">
                     <p>
                         <strong>Carlos Mendes</strong><br><br> 
                             Especialista em Resgate<br> Carlos é responsável por
@@ -300,9 +276,9 @@
                         </p>
                 </div>
             </div>
+        </section>
 
             <br>
-
     </aside>
 
     <footer>
@@ -312,15 +288,15 @@
             <div class="grid">
                 <div>
                     <div class="footer-line">
-                        <img src="img/pino-de-localizacao.png" alt="Icone de localização">
+                        <img src="img/pino-de-localizacao.png" alt="Icone de localização" loading="lazy">
                         <p>R. Algumlugar Do Brasil, nº 203</p>
                     </div>
                     <div class="footer-line">
-                        <img src="img/telefone.png" alt="Ícone de telefone">
+                        <img src="img/telefone.png" alt="Ícone de telefone" loading="lazy">
                         <p>+55 (51) 99402-5290</p>
                     </div>
                     <div class="footer-line">
-                        <img src="img/o-email.png" alt="Ícone de e-mail">
+                        <img src="img/o-email.png" alt="Ícone de e-mail" loading="lazy">
                         <a href=""><p style="color: blue">suporte@companhia.com</p></a>    
                     </div>
                 </div>
@@ -342,6 +318,8 @@
         
     </footer>
 
+    <script src="js/script.js"></script>
+    <script src="js/acessibilidade.js"></script>
 </body>
 
 </html>

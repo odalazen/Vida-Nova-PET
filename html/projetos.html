@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style-projetos.css">
+    <link rel="stylesheet" href="../css/acessibilidade.css">
+    <title>Vida Nova Pet</title>
+</head>
+
+<body>
+
+
+    <header>
+        <img class="site-logo" src="../img/logo.png"
+            alt="Logotipo do site que consiste em uma pata de cachorro e um pássaro rodeando a frase Vida Nova Pet" loading="lazy">
+        <!--Menu escondido para mobile-->
+        <button class="menu-toggle" aria-label="Abrir menu">
+            ☰
+        </button>
+
+        <nav class="nav-links">
+            <a href="../index.html">INÍCIO</a>
+            <a href="#">SOBRE</a>
+            <a href="cadastro.html" class="btn">CADASTRE-SE</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        
+        
+        <article>
+            <div class="separador-conteudo"></div>
+            <!-- Carrossel horizontal de 6 imagens -->
+            <section class="carousel-wrapper">
+
+                <button class="carousel-btn prev" aria-label="Anterior">◀</button>
+                <div class="carousel" tabindex="0">
+                    <div class="carousel-track">
+                        <div class="carousel-item"><img src="../img/adocao.webp" alt="Adoção" loading="lazy">
+                            <h2>Campanhas de Adoção</h2>
+                            <p>Realizamos campanhas de adoção em diversas localidades, promovendo a conscientização
+                                sobre a importância da adoção responsável. Nossos eventos são projetados para conectar
+                                animais resgatados a famílias amorosas, garantindo que cada animal encontre um lar
+                                seguro e acolhedor.</p>
+                            <p>Organizamos eventos regulares para encontrar
+                                lares
+                                amorosos
+                                para
+                                nossos animais resgatados, promovendo a adoção responsável e consciente. </p>
+                        </div>
+                        <div class="carousel-item"><img src="../img/workshop.webp" alt="Workshop" loading="lazy">
+                            <h2>Workshops Educativos & Desenvolvimento Social</h2>
+                            <p>Promovemos workshops interativos e palestras especializadas abordando temas cruciais como
+                                etologia animal, medicina veterinária preventiva e a importância da guarda responsável.
+                                Nossos especialistas compartilham conhecimentos práticos e teóricos, visando construir
+                                uma comunidade mais consciente e engajada no bem-estar animal.</p>
+                        </div>
+                        <div class="carousel-item"><img src="../img/castracao.webp" alt="Castração" loading="lazy"> 
+                            <h2>Programa Integrado de Castração</h2>
+                            <p>Desenvolvemos um programa abrangente de esterilização que combina acessibilidade
+                                financeira com excelência médica. Oferecemos procedimentos subsidiados e gratuitos para
+                                comunidades vulneráveis, implementando um sistema eficaz de controle populacional que
+                                respeita tanto o bem-estar animal quanto a realidade socioeconômica local.</p>
+                        </div>
+                        <div class="carousel-item"><img src="../img/resgate.webp" alt="Resgate" loading="lazy">
+                            <h2>Unidade de Resgate e Pronto Atendimento</h2>
+                            <p>Nossa equipe especializada em resgates emergenciais opera 24/7, equipada com tecnologia
+                                de ponta e protocolos avançados de salvamento. Oferecemos suporte imediato em situações
+                                críticas, desde acidentes até maus-tratos, garantindo assistência médica qualificada e
+                                recuperação adequada.</p>
+                        </div>
+                        <div class="carousel-item"><img src="../img/vet.webp" alt="Veterinária" loading="lazy">
+                            <h2>Centro de Excelência Veterinária</h2>
+                            <p>Nossa equipe multidisciplinar inclui veterinários especialistas, cirurgiões e
+                                profissionais de reabilitação, oferecendo tratamentos integrados e personalizados.
+                                Utilizamos equipamentos modernos e técnicas inovadoras para garantir os melhores
+                                resultados em cada caso atendido.</p>
+                        </div>
+                        <div class="carousel-item"><img src="../img/voluntario.webp" alt="Voluntariado" loading="lazy">
+                            <h2>Programa de Voluntariado Estruturado</h2>
+                            <p>Mantemos um sistema de voluntariado profissionalizado, com treinamentos específicos e
+                                divisão estratégica de responsabilidades. Nossos voluntários recebem capacitação
+                                contínua em áreas como manejo comportamental, primeiros socorros e organização de
+                                eventos, formando uma rede eficiente de apoio aos animais.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn next" aria-label="Próximo">▶</button>
+            </section>
+
+        </article>
+
+
+        <div class="separador-conteudo"></div>
+
+        <article id="doacao-contato">
+            <section class="doacao">
+                <h2>Doe agora e nos ajude nesta causa</h2>
+                <p>Doe qualquer valor acima de R$1,00</p>
+                <form id="donateForm" action="#" method="post">
+                    <div class="input">
+                        <input type="text" id="donation-amount" placeholder=" " required>
+                        <label for="donation-amount">Valor (R$)</label>
+                    </div>
+                    <div class="send">
+                        <button id="send-donate" type="submit">Doar Agora</button>
+                    </div>
+
+                    <script>
+                       
+                    </script>
+
+                </form>
+                <div class="accessibility-widget" aria-hidden="false">
+    <button class="aw-toggle" id="aw-open" aria-expanded="false" aria-controls="aw-panel" title="Abrir opções de acessibilidade">
+      ♿ <span class="sr-only">Abrir opções de acessibilidade</span>
+    </button>
+
+    <div class="aw-panel" id="aw-panel" role="region" aria-label="Controles de acessibilidade" aria-hidden="true">
+      <div class="aw-controls" style="align-items:center; justify-content:space-between;">
+        <strong>Acessibilidade</strong>
+        <button id="aw-close" class="aw-btn small" title="Fechar painel" aria-label="Fechar painel">✕</button>
+      </div>
+
+      <button id="contrast-toggle" class="aw-btn" aria-pressed="false" aria-live="polite">
+        <span>Alto contraste</span>
+        <span class="aw-indicator" aria-hidden="true">Off</span>
+      </button>
+
+      <div style="display:flex;gap:.4rem;align-items:center;justify-content:space-between;">
+        <span>Fonte</span>
+        <div style="display:flex;gap:.4rem;">
+          <button id="font-decrease" class="aw-btn small" title="Diminuir fonte" aria-label="Diminuir fonte">A−</button>
+          <button id="font-reset" class="aw-btn small" title="Tamanho padrão" aria-label="Restaurar fonte">A</button>
+          <button id="font-increase" class="aw-btn small" title="Aumentar fonte" aria-label="Aumentar fonte">A+</button>
+        </div>
+      </div>
+            </section>
+            
+        </article>
+
+
+
+    </main>
+
+    <script src="../js/projetos.js"></script>
+    <script src="../js/acessibilidade.js"></script>
+
+</body>

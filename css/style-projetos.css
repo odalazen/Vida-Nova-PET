@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --laranja: rgb(254, 179, 2);
+  --verde: rgb(150, 194, 74);
+  --azul: rgb(50, 148, 146);
+  --branco: rgb(255, 255, 255);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+/* fallback: evitar scroll lateral indesejado */
+html, body {
+  max-width: 100%;
+}
+
+body{
+    background-color: #fff;
+}
+
+img.site-logo {
+  width: 140px;
+  height: 140px;
+  padding-left: 5%;
+}
+
+
+html {
+  font-size: 1em;
+  scroll-behavior: smooth;
+}
+
+p{font-family: "Roboto", sans-serif;}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  padding-top: 20px;
+}
+
+.separador-conteudo {
+  margin-top: 3%;
+}
+
+@media (max-width:780px) {
+.separador-conteudo {
+  margin-top: 2%    
+}
+}
+/*CONFIGURAÇÃO DO HEADER*/
+header {
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+/*BARRA DE NAVEGAÇÃO*/
+nav {
+  display: flex;
+  align-items: center;
+  padding-right: 5%;
+  font-family: sans-serif;
+}
+
+nav a {
+  text-decoration: none;
+  padding-left: 40px;
+  color: black;
+}
+
+nav a:hover {
+  color: var(--verde);
+}
+
+/*menu escondido*/
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+}
+
+@media (min-width: 769px) {
+  article{
+    padding-top:100px;
+  }
+
+  
+}
+
+/* mostra o botão no mobile */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    padding-right: 16px;
+    color: var(--azul);
+    z-index: 1;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    background: white;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 20px;
+    gap: 15px;
+    display: none;
+    /* esconde inicialmente */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links .btn {
+    width: 150px;
+    background: none;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    cursor: pointer;
+    transition: none;
+  }
+
+  .nav-links .btn:hover {
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 18px;
+    text-shadow: none;
+    color: var(--verde);
+  }
+
+  .nav-links.active {
+    display: flex;
+    /* mostra quando ativado */
+  }
+
+  
+  main {
+    padding-top: 140px; /* espaço reservado abaixo do header no mobile */
+  }
+}
+
+
+
+/*CONFIGURAÇÃO DE BOTOES*/
+.btn {
+  color: white;
+  display: block;
+  width: 200px;
+  background-color: rgb(255, 187, 1);
+  padding: 10px 10px 10px 10px;
+  border-radius: 20px;
+  font-size: 1.2em;
+  margin: auto;
+  margin-left: 30px;
+  text-align: center;
+  transition: 0.4s ease;
+}
+
+.btn:hover {
+  background: var(--verde);
+  color: white;
+  font-size: 1.22em;
+  text-shadow: 2px 2px 2px rgba(255, 205, 4, 0.475);
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.029);
+}
+
+/* ===== CARROSSEL HORIZONTAL ===== */
+.carousel-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centraliza o conjunto: botão + carrossel + botão */
+  gap: 12px;
+  padding: 24px 0;
+  background-color: var(--laranja);
+}
+.carousel{
+  overflow-x: auto; /* permitir scroll horizontal e snap */
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory; /* ativa o snap */
+  /* esconder barra de rolagem visualmente */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  /* limitar largura para centralizar melhor em telas largas */
+  flex: 0 1 900px;
+  max-width: 100%;
+}
+
+/* esconder barra do webkit */
+.carousel::-webkit-scrollbar{ height: 0; display: none; }
+.carousel-track{
+  display: flex;
+  gap: 0; /* sem gap para que apenas um card ocupe toda a visão */
+  transition: transform 0.3s ease;
+  scroll-behavior: smooth;
+}
+.carousel-item{
+  /* cada item ocupa 100% do container para esconder os vizinhos */
+  min-width: 100%;
+  max-width: 100%;
+  flex: 0 0 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra a imagem para quando usar object-fit: contain */
+  scroll-snap-align: center; /* faz o card encaixar no centro ao rolar */
+}
+.carousel-item img{
+  display: block;
+  width: 100%;
+  height: 400px; 
+ /* mostra a imagem inteira sem cortar */
+  background: #f6f6f6;
+}
+.carousel-item p{
+    text-align: justify;
+  margin: 0;
+  padding: 12px;
+  max-width: 80%;
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  flex: 0 0 auto; /* garante que o texto ocupe espaço abaixo da imagem */
+}
+
+
+.carousel-btn{
+  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  width: 44px;
+  height: 600px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: ease 0.2s;
+}
+.carousel-btn:hover{ background: rgba(0,0,0,0.12); }
+.carousel.dragging{ cursor: grabbing; }
+
+.carousel h2{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+@media (max-width:600px){
+  .carousel-item img{
+    height: 250px;
+  }
+
+  .carousel-wrapper{
+    padding: 12px 0;
+  }
+  .carousel-btn{
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .carousel-item p{
+    font-size: 0.9rem;
+  }
+
+  .carousel{
+    flex: 0 1 100%;
+  }
+}
+
+article#doacao-contato {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 97%;
+  margin: 0 auto;
+  background-color: rgb(255, 255, 255);
+  display: block;
+  flex-direction: row;
+  gap: 60px;
+  padding: 20px;
+  min-height: 300px;
+}
+
+section .doacao {
+  background-color: salmon;
+}
+
+/* Configura os blocos interno doacao/contato com 40%/60% da altura do article */
+article#doacao-contato .doacao {
+  flex: 0 0 35%;
+  padding: 20px;
+  background-color: var(--verde);
+  color: var(--branco);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.515);
+}
+
+
+section.doacao h2 {
+    text-align: center;
+  margin: 0 auto;
+  width: 80%;
+  font-size: 2em;
+  line-height: 25px;
+  font-family: sans-serif;
+  color: rgb(255, 255, 255);
+  word-spacing: 3px;
+  letter-spacing: 2px;
+  
+}
+
+@media (max-width: 768px) {
+
+  section.doacao h2 {
+    font-size: 1.5em;
+    width: 100%;
+    line-height: 28px;
+  }
+}
+
+section.doacao p {
+  margin-top: 70px;
+font-size: 0.8em;
+}
+
+/* Estilos do formulário de doação dentro do bloco .doacao */
+article#doacao-contato .doacao form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+article#doacao-contato .doacao .input{
+  width: 100%; /* largura confortável para valor */
+  margin: 0;
+  text-align: center;
+  margin-left: 60px;
+}
+
+article#doacao-contato .doacao .input input{
+  background: var(--branco);
+  text-align: center;
+  color: #000;
+  padding: 10px 14px;
+  border-radius: 28px;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+/* label dentro do bloco .doacao antes de flutuar deve ficar branco sem sobreposição */
+article#doacao-contato .doacao .input label{
+  color: rgba(168, 168, 168, 0.95);
+}
+
+#send-donate{
+
+  font-size: 16px;
+  padding: 30px 46px;
+  border-radius: 50px;
+  background-color: black;
+  color: var(--laranja);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+/* quando o botão for foco/hover */
+#send-donate:hover{
+  background-color: var(--laranja);
+  color:#000;
+}
+
+@media (max-width: 780px){
+    article#doacao-contato{
+        width: 100%;
+    }
+}
+
+body.high-contrast {
+      --bg: #000000;
+      --fg: #ffffff;
+      --accent: #ffff00;
+      filter: none;
+      background: var(--bg) !important;
+      color: var(--fg) !important;
+    }
+
+    body.high-contrast a {
+      color: var(--accent) !important;
+      text-decoration: underline;
+    }
+
+    .accessibility-widget {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 99999;
+      display: flex;
+      gap: .5rem;
+      align-items: flex-end;
+      pointer-events: none; /* deixar os controles individuais controlarem pointer-events */
+      font-size: 0.9rem;
+    }
+
+    .aw-toggle {
+      pointer-events: auto;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: .6rem .75rem;
+      border-radius: 999px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.2);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap:.5rem;
+      transition: transform .12s ease;
+    }
+
+    .aw-toggle:focus { outline: 3px solid #ffd54f; outline-offset: 3px; }
+    .aw-toggle:active { transform: translateY(1px); }
+
+    .aw-panel {
+      pointer-events: auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      padding: .6rem;
+      display: none;
+      flex-direction: column;
+      gap: .4rem;
+      min-width: 210px;
+      align-items: stretch;
+    }
+    .aw-panel[aria-hidden="false"] { display: flex; }
+
+    /* botões do painel */
+    .aw-btn {
+      display: flex;
+      align-items: center;
+      gap:.6rem;
+      background: none;
+      border: 1px solid rgba(0,0,0,.08);
+      padding: .45rem .6rem;
+      border-radius: 8px;
+      cursor: pointer;
+      justify-content: space-between;
+    }
+    .aw-btn:focus { outline: 3px solid #ffd54f; outline-offset: 3px; }
+    .aw-btn.small { padding: .35rem .5rem; font-size: .9rem; }
+
+    .aw-controls {
+      display: flex;
+      gap:.5rem;
+      align-items:center;
+      justify-content: space-between;
+    }
+
+    /* estilo responsivo - esconda painel à esquerda em telas apertadas */
+    @media (max-width:420px){
+      .accessibility-widget { right: .6rem; bottom: .6rem; }
+      .aw-panel { min-width: 180px; }
+      .aw-toggle { padding: .5rem .6rem; }
+    }
+
+    /* utilitários visuais */
+    .sr-only{
+      position: absolute !important;
+      width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+    }
+
+    /* estado de ativado nos botões */
+    .aw-btn[aria-pressed="true"]{
+      border-color: var(--accent);
+      background: linear-gradient(180deg, rgba(11,118,239,0.08), rgba(11,118,239,0.03));
+    }

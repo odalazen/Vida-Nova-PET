@@ -53,7 +53,7 @@ a{
 }
 
 body {
-background-image: url(img/cachorro.jpg);
+background-image: url("../img/cachorro.jpg");
 background-position: center;
 background-size: cover;
 }
@@ -189,3 +189,102 @@ background-size: cover;
   .cadastro-card{ padding: 20px; }
   .btn{ width: 100%; }
 }
+
+body.high-contrast {
+      --bg: #000000;
+      --fg: #ffffff;
+      --accent: #ffff00;
+      filter: none;
+      background: var(--bg) !important;
+      color: var(--fg) !important;
+    }
+
+    body.high-contrast a {
+      color: var(--accent) !important;
+      text-decoration: underline;
+    }
+
+    .accessibility-widget {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 99999;
+      display: flex;
+      gap: .5rem;
+      align-items: flex-end;
+      pointer-events: none; /* deixar os controles individuais controlarem pointer-events */
+      font-size: 0.9rem;
+    }
+
+    .aw-toggle {
+      pointer-events: auto;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: .6rem .75rem;
+      border-radius: 999px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.2);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap:.5rem;
+      transition: transform .12s ease;
+    }
+
+    .aw-toggle:focus { outline: 3px solid #ffd54f; outline-offset: 3px; }
+    .aw-toggle:active { transform: translateY(1px); }
+
+    .aw-panel {
+      pointer-events: auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      padding: .6rem;
+      display: none;
+      flex-direction: column;
+      gap: .4rem;
+      min-width: 210px;
+      align-items: stretch;
+    }
+    .aw-panel[aria-hidden="false"] { display: flex; }
+
+    /* botões do painel */
+    .aw-btn {
+      display: flex;
+      align-items: center;
+      gap:.6rem;
+      background: none;
+      border: 1px solid rgba(0,0,0,.08);
+      padding: .45rem .6rem;
+      border-radius: 8px;
+      cursor: pointer;
+      justify-content: space-between;
+    }
+    .aw-btn:focus { outline: 3px solid #ffd54f; outline-offset: 3px; }
+    .aw-btn.small { padding: .35rem .5rem; font-size: .9rem; }
+
+    .aw-controls {
+      display: flex;
+      gap:.5rem;
+      align-items:center;
+      justify-content: space-between;
+    }
+
+    /* estilo responsivo - esconda painel à esquerda em telas apertadas */
+    @media (max-width:420px){
+      .accessibility-widget { right: .6rem; bottom: .6rem; }
+      .aw-panel { min-width: 180px; }
+      .aw-toggle { padding: .5rem .6rem; }
+    }
+
+    /* utilitários visuais */
+    .sr-only{
+      position: absolute !important;
+      width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+    }
+
+    /* estado de ativado nos botões */
+    .aw-btn[aria-pressed="true"]{
+      border-color: var(--accent);
+      background: linear-gradient(180deg, rgba(11,118,239,0.08), rgba(11,118,239,0.03));
+    }
